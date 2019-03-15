@@ -18,11 +18,11 @@ const Article = ({
     >
       <article className="Article">
         <h1>{title}</h1>
-        {sections.map(({ modelName, ...section}) => {
+        {sections.map(({ __typename, ...section}) => {
           const SectionComponent = {
-            textsection: TextSection,
-            imagesection: ImageSection,
-          }[modelName];
+            TextSection: TextSection,
+            ImageSection: ImageSection,
+          }[__typename];
 
           return (
             <section className="Article__section" key={section.id}>

@@ -1,35 +1,29 @@
 import React from 'react';
 
-import Article from '../Article';
+import { ApolloProvider } from 'react-apollo'
+import ApolloClient from 'apollo-boost';
+
+
+import ArticleDetailView from '../Article/ArticleDetailView';
 
 import './App.css';
 
+const apolloClient = new ApolloClient({
+  uri: 'http://localhost:7100/gql',
+})
+
 const App = () => {
-  const article = {
-    id: '1',
-    title: 'Some article title',
-    sections: [
-      {
-        id: '1',
-        modelName: 'textsection',
-        text: 'This is some text coming from the backend.',
-      },
-      {
-        id: '2',
-        modelName: 'imagesection',
-        src: 'http://placekitten.com/g/600/600',
-      }
-    ],
-  };
   return (
-    <div className="App">
-      <header className="App-header">
-        React-CMS
-      </header>
-      <div className="App-wrapper">
-        <Article {...article} />
+    <ApolloProvider client={apolloClient}>
+      <div className="App">
+        <header className="App-header">
+          React-CMS
+        </header>
+        <div className="App-wrapper">
+          <ArticleDetailView />
+        </div>
       </div>
-    </div>
+    </ApolloProvider>
   );
 }
 

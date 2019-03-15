@@ -80,7 +80,7 @@ const InlineEditable = ({
             className="InlineEditable__admin-panel__close"
             onClick={closeAdminPanel}
           >
-            ✖️
+            ×
           </div>
           <iframe
             className="InlineEditable__admin-panel__iframe"
