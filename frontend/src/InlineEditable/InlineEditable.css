@@ -1,0 +1,40 @@
+.InlineEditable {
+}
+
+.InlineEditable__tooltip {
+  position: fixed;
+  background: #555;
+  color: white;
+  padding: 2px 5px;
+  pointer-events: none;
+}
+
+
+.InlineEditable__admin-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  min-width: 600px;
+  background: white;
+
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.InlineEditable__admin-panel--enter,
+.InlineEditable__admin-panel--exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.InlineEditable__admin-panel--enter-active,
+.InlineEditable__admin-panel--exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.InlineEditable__children-wrapper--focused {
+  box-shadow: 0 0 1px 1px #ffbd47;
+}

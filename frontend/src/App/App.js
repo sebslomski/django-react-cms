@@ -7,15 +7,16 @@ import './App.css';
 const App = () => {
   const article = {
     id: 'article-1',
+    title: 'Some article title',
     sections: [
       {
         id: 'section-1',
-        type: 'text',
+        modelName: 'textsection',
         text: 'This is some text coming from the backend.',
       },
       {
         id: 'section-2',
-        type: 'image',
+        modelName: 'imagesection',
         src: 'http://placekitten.com/g/600/600',
       }
     ],

@@ -2,28 +2,41 @@ import React from 'react';
 
 import TextSection from '../TextSection';
 import ImageSection from '../ImageSection';
+import InlineEditable from '../InlineEditable';
 
 import './Article.css';
 
 const Article = ({
   id,
+  title,
   sections,
 }) => {
   return (
-    <article class="Article">
-      {sections.map(({ type, ...section}) => {
-        const SectionComponent = {
-          text: TextSection,
-          image: ImageSection,
-        }[type];
+    <InlineEditable
+      modelName="article"
+      id={id}
+    >
+      <article className="Article">
+        <h1>{title}</h1>
+        {sections.map(({ modelName, ...section}) => {
+          const SectionComponent = {
+            textsection: TextSection,
+            imagesection: ImageSection,
+          }[modelName];
 
-        return (
-          <section class="Article__section">
-            <SectionComponent {...section} />
-          </section>
-        );
-      })}
-    </article>
+          return (
+            <section className="Article__section" key={section.id}>
+              <InlineEditable
+                modelName={modelName}
+                id={section.id}
+              >
+                <SectionComponent {...section} />
+              </InlineEditable>
+            </section>
+          );
+        })}
+      </article>
+    </InlineEditable>
   );
 };
 

@@ -6,7 +6,7 @@ const TextSection = ({
   text,
 }) => {
   return (
-    <div class="TextSection">
+    <div className="TextSection">
       {text}
     </div>
   );
