@@ -10,6 +10,28 @@
 }
 
 
+.InlineEditable__overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(50, 50, 50, 0.3);
+
+  transition: opacity 300ms;
+}
+
+.InlineEditable__overlay--enter,
+.InlineEditable__overlay--exit-active {
+  opacity: 0;
+}
+
+.InlineEditable__overlay--enter-active,
+.InlineEditable__overlay--exit {
+  opacity: 1;
+}
+
+
 .InlineEditable__admin-panel {
   position: fixed;
   top: 0;
@@ -19,8 +41,25 @@
   min-width: 600px;
   background: white;
 
+  box-shadow: 3px 0px 16px #555;
+
   transition: all 0.3s;
   z-index: 1;
+}
+
+.InlineEditable__admin-panel__close{
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.InlineEditable__admin-panel__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .InlineEditable__admin-panel--enter,
@@ -36,5 +75,5 @@
 }
 
 .InlineEditable__children-wrapper--focused {
-  box-shadow: 0 0 1px 1px #ffbd47;
+  box-shadow: 0 0 2px 2px #ffbd47;
 }

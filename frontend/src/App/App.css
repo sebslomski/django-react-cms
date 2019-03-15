@@ -12,3 +12,11 @@
   padding: 10px;
   color: white;
 }
+
+.App-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #c0c0c0;
+  border-top: none;
+  border-bottom: none;
+}

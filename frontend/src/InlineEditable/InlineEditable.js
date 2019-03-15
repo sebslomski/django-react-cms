@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import './InlineEditable.css';
 
-const BACKEND_URL = 'http://localhost:4000';
+const BACKEND_URL = 'http://localhost:7100';
 const BACKEND_ADMIN_APP_NAME = 'cms';
 
 const InlineEditable = ({
@@ -14,6 +14,21 @@ const InlineEditable = ({
   const [tooltipIsVisisble, setTooltipIsVisibile] = useState(false);
   const [adminPanelIsVisible, setAdminPanelIsVisible] = useState(false);
   const [{ x: tooltipX, y: tooltipY }, setTooltipCoordinates] = useState({ x: 1, y: 1, });
+
+  const postMessageListener = ({ data }) => {
+    if (data === 'closePopup') {
+      setAdminPanelIsVisible(false);
+      window.removeEventListener('message', postMessageListener);
+      // This could be done via actions instead ...
+      window.location.reload();
+    }
+  };
+
+  const closeAdminPanel = () => {
+    setAdminPanelIsVisible(false);
+
+    window.removeEventListener('message', postMessageListener);
+  };
 
   return (
     <div
@@ -31,9 +46,11 @@ const InlineEditable = ({
         e.stopPropagation();
         setTooltipCoordinates({ x: e.clientX, y: e.clientY })
       }}
-      onDoubleClick={() => {
+      onDoubleClick={e => {
+        e.stopPropagation();
         setAdminPanelIsVisible(true);
         setTooltipIsVisibile(false);
+        window.addEventListener('message', postMessageListener);
       }}
     >
       <div className={`InlineEditable__children-wrapper ${tooltipIsVisisble ? 'InlineEditable__children-wrapper--focused' : ''}`}>
@@ -42,12 +59,34 @@ const InlineEditable = ({
       <CSSTransition
         in={adminPanelIsVisible}
         timeout={300}
+        classNames="InlineEditable__overlay-"
+        mountOnEnter
+        unmountOnExit
+      >
+        <div
+          className="InlineEditable__overlay"
+          onClick={closeAdminPanel}
+        />
+      </CSSTransition>
+      <CSSTransition
+        in={adminPanelIsVisible}
+        timeout={300}
         classNames="InlineEditable__admin-panel-"
         mountOnEnter
         unmountOnExit
       >
         <div className="InlineEditable__admin-panel">
-          <iframe title="Admin Popup" src={`${BACKEND_URL}/admin/${BACKEND_ADMIN_APP_NAME}/${modelName}/${id}/change?_popup=1`} />
+          <div
+            className="InlineEditable__admin-panel__close"
+            onClick={closeAdminPanel}
+          >
+            ✖️
+          </div>
+          <iframe
+            className="InlineEditable__admin-panel__iframe"
+            title="Admin Popup"
+            src={`${BACKEND_URL}/admin/${BACKEND_ADMIN_APP_NAME}/${modelName}/${id}/change?_popup=1`}
+          />
         </div>
       </CSSTransition>
       {(!adminPanelIsVisible && tooltipIsVisisble) && (

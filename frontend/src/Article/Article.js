@@ -27,7 +27,7 @@ const Article = ({
           return (
             <section className="Article__section" key={section.id}>
               <InlineEditable
-                modelName={modelName}
+                modelName="section"
                 id={section.id}
               >
                 <SectionComponent {...section} />
