@@ -11,6 +11,7 @@ class Section(PolymorphicModel):
     article = models.ForeignKey(
         Article,
         on_delete=models.CASCADE,
+        related_name='sections',
     )
 
     class Meta:

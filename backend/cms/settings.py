@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'cms',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static'
+
+GRAPHENE = {
+    'SCHEMA': 'cms.schema.schema'
+}
