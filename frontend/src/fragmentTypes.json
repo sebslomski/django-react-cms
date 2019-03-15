@@ -1,0 +1,30 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "UNION",
+        "name": "Section",
+        "possibleTypes": [
+          {
+            "name": "TextSection"
+          },
+          {
+            "name": "ImageSection"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "SectionInterface",
+        "possibleTypes": [
+          {
+            "name": "TextSection"
+          },
+          {
+            "name": "ImageSection"
+          }
+        ]
+      }
+    ]
+  }
+}

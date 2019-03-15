@@ -18,7 +18,7 @@ class TextSection(graphene.ObjectType):
         )
 
 class ImageSection(graphene.ObjectType):
-    url = graphene.String()
+    src = graphene.String()
 
     class Meta:
         interfaces = (
