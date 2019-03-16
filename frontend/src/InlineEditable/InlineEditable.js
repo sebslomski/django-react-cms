@@ -19,8 +19,6 @@ const InlineEditable = ({
     if (data === 'closePopup') {
       setAdminPanelIsVisible(false);
       window.removeEventListener('message', postMessageListener);
-      // This could be done via actions instead ...
-      window.location.reload();
     }
   };
 

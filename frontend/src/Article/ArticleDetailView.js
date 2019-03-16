@@ -25,7 +25,7 @@ const query = gql`
 
 const ArticleDetailView = (data) => {
   return (
-    <Query query={query}>
+    <Query query={query} pollInterval={500}>
      {({ loading, error, data }) => {
 
       if (loading) return 'Loading...';
