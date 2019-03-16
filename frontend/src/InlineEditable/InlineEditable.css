@@ -3,10 +3,20 @@
 
 .InlineEditable__tooltip {
   position: fixed;
-  background: #555;
+  background: #444;
   color: white;
-  padding: 2px 5px;
+  padding: 3px 6px;
   pointer-events: none;
+  font-size: 11px;
+  border-radius: 2px;
+  margin-left: 15px;
+  margin-top: -4px;
+  text-align: left;
+}
+
+.InlineEditable__tooltip__header {
+  font-weight: bold;
+  color: #eee;
 }
 
 

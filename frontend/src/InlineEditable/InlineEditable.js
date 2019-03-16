@@ -83,7 +83,7 @@ const InlineEditable = ({
           <iframe
             className="InlineEditable__admin-panel__iframe"
             title="Admin Popup"
-            src={`${BACKEND_URL}/admin/${BACKEND_ADMIN_APP_NAME}/${modelName}/${id}/change?_popup=1`}
+            src={`${BACKEND_URL}/admin/${BACKEND_ADMIN_APP_NAME}/${modelName.toLowerCase()}/${id}/change?_popup=1`}
           />
         </div>
       </CSSTransition>
@@ -92,7 +92,12 @@ const InlineEditable = ({
           className="InlineEditable__tooltip"
           style={{ top: tooltipY, left: tooltipX }}
         >
-          Douple click do edit `{modelName}`
+          <div className="InlineEditable__tooltip__header">
+          Douple click do edit
+          </div>
+          <div className="InlineEditable__tooltip__description">
+            {modelName}
+          </div>
         </div>
       )}
     </div>

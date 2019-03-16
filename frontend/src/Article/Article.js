@@ -9,11 +9,12 @@ import './Article.css';
 const Article = ({
   id,
   title,
+  __typename,
   sections,
 }) => {
   return (
     <InlineEditable
-      modelName="article"
+      modelName={__typename}
       id={id}
     >
       <article className="Article">
@@ -27,7 +28,7 @@ const Article = ({
           return (
             <section className="Article__section" key={section.id}>
               <InlineEditable
-                modelName="section"
+                modelName={__typename}
                 id={section.id}
               >
                 <SectionComponent {...section} />
